@@ -1,30 +1,23 @@
-name: 'Deployment Risk Calculator'
-description: 'Calculate deployment risk based on code changes and metadata'
+ name: 'Repository Info'
+description: 'Get repository information and statistics'
 author: 'Training Team'
 
 inputs:
-  files-changed-threshold:
-    description: 'Maximum number of files before flagging as high risk'
+  github-token:
+    description: 'GitHub token for API access'
+    required: true
+  include-collaborators:
+    description: 'Include collaborator count'
     required: false
-    default: '20'
-  lines-changed-threshold:
-    description: 'Maximum lines changed before flagging as high risk'
-    required: false
-    default: '500'
-  critical-paths:
-    description: 'Comma-separated list of critical file paths (e.g., src/payment,src/auth)'
-    required: false
-    default: ''
+    default: 'false'
 
 outputs:
-  risk-score:
-    description: 'Calculated risk score (0-100)'
-  risk-level:
-    description: 'Risk level: low, medium, high, critical'
-  recommendation:
-    description: 'Deployment recommendation'
-  analysis:
-    description: 'Detailed risk analysis JSON'
+  repo-name:
+    description: 'Repository name'
+  stars:
+    description: 'Number of stars'
+  open-issues:
+    description: 'Number of open issues'
 
 runs:
   using: 'node20'
